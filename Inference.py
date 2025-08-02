@@ -23,6 +23,16 @@ from torchvision.transforms.functional import normalize
 
 from models import *
 if __name__ == "__main__":
+    from huggingface_hub import hf_hub_download
+
+    model_path = hf_hub_download(
+        repo_id="Vxtzq/Is-Net",
+        filename="isnet-general-use.pth",
+        local_dir="./",  # or use any specific folder path
+        local_dir_use_symlinks=False  # ensures the file is copied, not symlinked
+    )
+    
+    print("Model downloaded to:", model_path)
     dataset_path="sprite"  # Your dataset path
     model_path="isnet-general-use.pth"  # the model path
     result_path="sprite_output"  # The folder path that you want to save the results
